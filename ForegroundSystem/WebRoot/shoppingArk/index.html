@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>自助售货柜</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" sizes="any" mask="" href="img/1.jpg">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<link href="js/themes/black/pace-theme-barber-shop.css" rel="external nofollow" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/template.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.paceOptions = {　　　　
+				ajax: true,
+				eventLag: false,
+				elements: false　　
+			}
+			window.paceOptions = {　　　　
+				ajax: {　　　　　　
+					trackMethods: ['GET', 'POST']　　　　
+				}　　
+			}
+		</script>
+		<script src="js/ichart.1.2.src.js"></script>
+		<script src="js/pace.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js"></script>
+	</head>
+
+	<body class="container-fluid">
+		<h3>欢迎使用自助售货机</h3>
+		<div class="title">
+		</div>
+		<script id="title" type="text/html">
+			{{each list as value i}}
+			<span class="art art{{i}}">{{i}}号柜</span> {{/each}}
+		</script>
+		<form>
+			<div class="showLists">
+				<ul class="lists">
+					<li class="lastLi">
+						<div>共&nbsp;<span class="span span1">4</span>&nbsp;件，总价：￥&nbsp;<span class="span span2">3.5</span></div>
+						<input class="submit" type="button" value="支付" />
+					</li>
+				</ul>
+			</div>
+		</form>
+		<div class="pay">
+		</div>
+		<div class="help">
+			<a href="tel:18337162110"><span class="glyphicon glyphicon-earphone"></span>&nbsp;故障报告</a>
+			<div></div>
+			<a href="demo/help.html"><span class="glyphicon glyphicon-book"></span>&nbsp;使用说明</a>
+		</div>
+	</body>
+
+</html>

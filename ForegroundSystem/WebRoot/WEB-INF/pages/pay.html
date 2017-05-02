@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>支付页面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			header,
+			.sub ,
+			footer{
+				font-size: 16px;
+				display: block;
+				margin: 50px auto;
+				text-align: center;
+			}
+			.sub{
+				width: 80%;
+				height: 40px;
+				color: #fff;
+				background-color:#5f9ea0;
+				border: 1px solid #5f9ea0;
+				border-radius: 5px;
+				box-shadow: 2px 2px 10px 2px #f8f8f8;
+			}
+			footer{
+				display: none;
+				text-align: right;
+				padding-right: 20px;
+			}
+			div{
+				height: 16px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>您需要支付<span class="money"></span>元。</header>
+		<button class="sub">确认支付</button>
+		<footer>
+			<a href="tel:18337162110"><span class="glyphicon glyphicon-earphone"></span>&nbsp;客户电话</a>
+			<div></div>
+			<a href="#"><span class="glyphicon glyphicon-book"></span>&nbsp;客服微信</a>
+		</footer>
+	</body>
+
+</html>
+<script>
+	$(function() {
+		var url = "http://192.168.0.112:8080/SpringMVC_Spring_mybatis/goods/getAllGoods";
+		var index = window.document.location.search.indexOf("&");
+		var money = window.document.location.search.slice(7, index);
+		var str = window.document.location.search.slice((index) + 6);
+		str = str.split(',');
+		var device = str[0].toString().slice(0, 9);
+		$('.money').html(money);
+		var data = {};
+		$('.sub').click(function() {
+			alert('支付成功');
+			data['device'] = device;
+			var lockers = [];
+			for(var i = 0; i < str.length; i++) {
+				lockers[i] = {};
+				lockers[i]['cabinet'] = str[i].slice(0, 12);
+				lockers[i]['locker'] = str[i].slice(12);
+			}
+
+			data['lockers'] = lockers;
+			console.log(data);
+			data = JSON.stringify(data);
+			console.log(data);
+			$.ajax({
+				type: "post",
+				url: "test.json",
+				data: data,
+				dataType: "json",
+				success: function(data) {
+					alert(data);
+					if(data.device_status == "在线") {
+						console.log(data);
+					} else {
+						alert(data.error_message);
+						$('footer').show();
+						$('footer').children('.glyphicon-earphone').attr('href',data.customer_service_hotline);
+						$('footer').children('.glyphicon-book').attr('href',data.customer_service_wechat);
+					}
+				},
+				error: function(data) {
+					alert("异常！");
+					console.log(data);
+				}
+			})
+		})
+	})
+</script>

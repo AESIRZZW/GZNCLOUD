@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzncloud.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Goods">
+    <id column="good" jdbcType="BIGINT" property="good" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="expire_at" jdbcType="TIMESTAMP" property="expire_at" />
+    <result column="purchase_price" jdbcType="INTEGER" property="purchase_price" />
+    <result column="retail_price" jdbcType="BIGINT" property="retail_price" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    good, user, name, image1, image2, image3, description, expire_at, purchase_price, 
+    retail_price, currency, created_at, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where good = #{good,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods
+    where good = #{good,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Goods">
+    insert into goods (good, user, name, 
+      image1, image2, image3, 
+      description, expire_at, purchase_price, 
+      retail_price, currency, created_at, 
+      deleted)
+    values (#{good,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{image3,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{expire_at,jdbcType=TIMESTAMP}, #{purchase_price,jdbcType=INTEGER}, 
+      #{retail_price,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{created_at,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        good,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image1 != null">
+        image1,
+      </if>
+      <if test="image2 != null">
+        image2,
+      </if>
+      <if test="image3 != null">
+        image3,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="expire_at != null">
+        expire_at,
+      </if>
+      <if test="purchase_price != null">
+        purchase_price,
+      </if>
+      <if test="retail_price != null">
+        retail_price,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image1 != null">
+        image1 = #{image1,jdbcType=VARCHAR},
+      </if>
+      <if test="image2 != null">
+        image2 = #{image2,jdbcType=VARCHAR},
+      </if>
+      <if test="image3 != null">
+        image3 = #{image3,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="expire_at != null">
+        expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchase_price != null">
+        purchase_price = #{purchase_price,jdbcType=INTEGER},
+      </if>
+      <if test="retail_price != null">
+        retail_price = #{retail_price,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Goods">
+    update goods
+    set user = #{user,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      image3 = #{image3,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      expire_at = #{expire_at,jdbcType=TIMESTAMP},
+      purchase_price = #{purchase_price,jdbcType=INTEGER},
+      retail_price = #{retail_price,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where good = #{good,jdbcType=BIGINT}
+  </update>
+</mapper>

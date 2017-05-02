@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzncloud.mapper.LockerLogsMapper">
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.LockerLogs">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="locker" jdbcType="BIGINT" property="locker" />
+    <result column="cabinet" jdbcType="BIGINT" property="cabinet" />
+    <result column="device" jdbcType="BIGINT" property="device" />
+    <result column="order" jdbcType="BIGINT" property="order" />
+    <result column="timestamp" jdbcType="TIMESTAMP" property="timestamp" />
+    <result column="good" jdbcType="BIGINT" property="good" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, locker, cabinet, device, order, timestamp, good, amount, currency, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from locker_logs
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from locker_logs
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.LockerLogs">
+    insert into locker_logs (id, locker, cabinet, 
+      device, order, timestamp, 
+      good, amount, currency, 
+      description)
+    values (#{id,jdbcType=BIGINT}, #{locker,jdbcType=BIGINT}, #{cabinet,jdbcType=BIGINT}, 
+      #{device,jdbcType=BIGINT}, #{order,jdbcType=BIGINT}, #{timestamp,jdbcType=TIMESTAMP}, 
+      #{good,jdbcType=BIGINT}, #{amount,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.LockerLogs">
+    insert into locker_logs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="locker != null">
+        locker,
+      </if>
+      <if test="cabinet != null">
+        cabinet,
+      </if>
+      <if test="device != null">
+        device,
+      </if>
+      <if test="order != null">
+        order,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="good != null">
+        good,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="currency != null">
+        currency,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="locker != null">
+        #{locker,jdbcType=BIGINT},
+      </if>
+      <if test="cabinet != null">
+        #{cabinet,jdbcType=BIGINT},
+      </if>
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=BIGINT},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.LockerLogs">
+    update locker_logs
+    <set>
+      <if test="locker != null">
+        locker = #{locker,jdbcType=BIGINT},
+      </if>
+      <if test="cabinet != null">
+        cabinet = #{cabinet,jdbcType=BIGINT},
+      </if>
+      <if test="device != null">
+        device = #{device,jdbcType=BIGINT},
+      </if>
+      <if test="order != null">
+        order = #{order,jdbcType=BIGINT},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="good != null">
+        good = #{good,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="currency != null">
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.LockerLogs">
+    update locker_logs
+    set locker = #{locker,jdbcType=BIGINT},
+      cabinet = #{cabinet,jdbcType=BIGINT},
+      device = #{device,jdbcType=BIGINT},
+      order = #{order,jdbcType=BIGINT},
+      timestamp = #{timestamp,jdbcType=TIMESTAMP},
+      good = #{good,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=BIGINT},
+      currency = #{currency,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

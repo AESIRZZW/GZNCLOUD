@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			body {
+				font-size: 20px !important;
+			}
+			
+			input[type='checkbox'] {
+				visibility: hidden;
+			}
+			
+			input[type='submit'] ,.sub{
+				display: block;
+				width: 10rem;
+				height: 2.5rem;
+				margin: 2.5rem 0;
+				clear: both;
+			}
+			
+			.checkbox {
+				width: 2.5rem;
+				height: 2.5rem;
+				float: left;
+				background: #ddd;
+				margin: 1rem;
+				border-radius: 50%;
+				position: relative;
+				box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+			}
+			
+			.checkbox label {
+				display: block;
+				width: 2rem;
+				height: 2rem;
+				line-height: 2rem;
+				text-align: center;
+				color: #fff;
+				border-radius: 100px;
+				transition: all .5s ease;
+				cursor: pointer;
+				position: absolute;
+				top: .25rem;
+				left: .25rem;
+				z-index: 1;
+				background: #868686;
+				box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+			}
+			
+			.checkbox input[type=checkbox]:checked + label {
+				background: #26ca28;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<form>
+			<div class="checkbox">
+				<input type="checkbox" value="1703000010010001" id="checkboxInputA1" name="number" />
+				<label for="checkboxInputA1">1</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" value="1703000010010002" id="checkboxInputA2" name="number" />
+				<label for="checkboxInputA2">2</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" value="1703000010010003" id="checkboxInputA3" name="number" />
+				<label for="checkboxInputA3">3</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" value="1703000010010004" id="checkboxInputA4" name="number" />
+				<label for="checkboxInputA4">4</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" value="1703000010010005" id="checkboxInputA5" name="number" />
+				<label for="checkboxInputA5">5</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" value="1703000010010006" id="checkboxInputA6" name="number" />
+				<label for="checkboxInputA6">6</label>
+			</div>
+			<input type="submit"  value="submit_form" />
+			<input type="button" onclick="submit()"  value="Submit_ajax" class="number123"/>
+		</form>
+		<input type="button" value="123" class="number123"/>
+	</body>
+	<script type="text/javascript">
+		var url="http://192.168.0.112:8080/SpringMVC_Spring_mybatis/goods/getAllGoods";
+				var numeber=window.document.location.search.slice(8),
+		device=numeber.slice(0,9),
+		cabinet=numeber.slice(9,12),
+		locker=numeber.slice(12);
+		
+		console.log(device+"--"+cabinet+"--"+locker);
+		$('.number123').click(function(){
+			alert(123)
+			$.ajax({
+				type: 'get',
+				url: "test.json",
+				async: true,
+				dataType:"json",
+//				data: $("form").serialize(),
+				success: function(data) {
+					alert(data[0].good);
+					
+				},
+				error:function(data){
+					console.log(data[0]);
+					
+					
+				}
+				
+			});
+		})
+	</script>
+
+</html>

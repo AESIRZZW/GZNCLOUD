@@ -1,0 +1,143 @@
+{
+	"device_status": "在线",
+	"error_message": "请使用微信或支付宝扫描该二维码",
+	"url": "支付页面地址",
+	"cabinets_count": 4,
+	"cabinets": [
+		{
+			"cabinet1_lockers_count": 1,
+			"lockers": [
+				{
+					"cabinet": 1703000011,
+					"locker": "1",
+					"name": "罐装82年老陈雪碧",
+					"price": 248,
+					"locker_id":"11",
+					"image": "1.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "2",
+					"name": "瓶装雪碧",
+					"price": 299,
+					"locker_id":"12",
+					"image": "2.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "3",
+					"name": "罐装可乐",
+					"price": 201,
+					"locker_id":"13",
+					"image": "3.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "4",
+					"name": "瓶装可乐",
+					"price": 388,
+					"locker_id":"14",
+					"image": "4.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "5",
+					"name": "罐装王老吉凉茶",
+					"price": 418,
+					"locker_id":"15",
+					"image": "1.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "6",
+					"name": "脉动",
+					"price": 450,
+					"locker_id":"16",
+					"image": "4.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "7",
+					"name": "哇哈哈",
+					"price": 120,
+					"locker_id":"17",
+					"image": "3.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "8",
+					"name": "脉动",
+					"price": 450,
+					"locker_id":"18",
+					"image": "2.jpg"
+				}, {
+					"cabinet": 1703000011,
+					"locker": "9",
+					"name": "哇哈哈",
+					"price": 120,
+					"locker_id":"19",
+					"image": "1.jpg"
+				}
+			]
+		}, {
+			"cabinet2_lockers_count": 2,
+			"lockers": [
+				{
+					"cabinet": 1703000012,
+					"locker": "1",
+					"name": "脉动",
+					"price": 450,
+					"locker_id":"21",
+					"image": "2.jpg"
+				}, {
+					"cabinet": 1703000012,
+					"locker": "2",
+					"name": "脉动",
+					"price": 405,
+					"locker_id":"22",
+					"image": "2.jpg"
+				},{
+					"cabinet": 1703000012,
+					"image": "",
+					"locker": "4",
+					"name": "",
+					"locker_id":"24",
+					"price": ""
+				}, {
+					"cabinet": 1703000012,
+					"locker": "3",
+					"name": "脉动",
+					"price": 455,
+					"locker_id":"23",
+					"image": "2.jpg"
+				}
+			]
+		}, {
+			"cabinet3_lockers_count": 3,
+			"lockers": [
+				{
+					"cabinet": 1703000013,
+					"locker": "1",
+					"name": "脉动",
+					"price": 495,
+					"locker_id":"31",
+					"image": "2.jpg"
+				}, {
+					"cabinet": 1703000013,
+					"locker": "2",
+					"name": "脉动",
+					"price": 465,
+					"locker_id":"32",
+					"image": "2.jpg"
+				}, {
+					"cabinet": 1703000013,
+					"locker": "3",
+					"name": "脉动",
+					"price": 445,
+					"locker_id":"33",
+					"image": "2.jpg"
+				},  {
+					"cabinet": 1703000013,
+					"image": "",
+					"locker": "4",
+					"name": "",
+					"locker_id":"34",
+					"price": ""
+				}
+			]
+		}
+	]
+}

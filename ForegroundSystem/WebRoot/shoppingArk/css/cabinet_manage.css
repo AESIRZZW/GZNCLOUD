@@ -1,0 +1,136 @@
+body {
+	font: 16px;
+}
+
+.inquire {
+	margin: 10px auto;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: right;
+	padding-right: 80px;
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+.inquire .input {
+	width: 12%;
+	height: 40px;
+	margin-right: 10px;
+}
+
+.inquire button {
+	margin: 0;
+	margin-right: 10px;
+}
+
+table {
+	width: 90%;
+	font-size: 16px;
+	height: auto;
+	margin: 30px auto;
+	text-align: center;
+}
+
+td,
+th {
+	border: 1px solid #a9a9a9;
+	text-align: center;
+	height: 20px;
+	padding: 8px 0;
+}
+
+th {
+	color: #5f9ea0;
+	border-bottom-width: 2px;
+}
+
+tr:hover {
+	background-color: #E0E0E0;
+}
+
+td button {
+	border: none;
+	background-color: #fff;
+	color: #5f9ea0;
+}
+
+td button:hover {
+	background-color: #5f9ea0;
+	color: #fff;
+}
+
+td button:last-child {
+	color: #a52e2e;
+}
+
+.modal-title {
+	color: #5f9ea0;
+}
+
+.modal_main {
+	height: 620px;
+}
+
+.modal_main button {
+	float: right;
+	margin: 0 20px 20px;
+}
+
+.modal_ul {
+	margin: 20px auto;
+	height: auto;
+}
+
+.modal_ul li {
+	margin: 10px 0;
+	height: 40px;
+	line-height: 40px;
+}
+
+.modal_ul  input,
+.modal_ul  div {
+	width: 60%;
+	height: 40px;
+	float: right;
+	margin-right: 16%;
+	outline: none;
+	padding-left: 10px;
+	color: #989898;
+	line-height: 40px;
+}
+
+.modal_ul li div {
+	padding: 0;
+}
+
+.modal_ul li input[type='checkbox'] {
+	width: 20px;
+	height: 20px;
+	float: none;
+	position: relative;
+	top: 5px;
+}
+
+footer {
+	text-align: right;
+	margin-right: 5%;
+}
+
+footer .button {
+	margin: 4px;
+	width: auto;
+	height: 30px;
+	line-height: 26px;
+}
+
+footer input {
+	width: 50px;
+	height: 30px;
+	text-align: center;
+	border: 1px solid #5f9ea0;
+}
+.modal-content .button{
+	float: right;
+	margin-top: 0px;
+}

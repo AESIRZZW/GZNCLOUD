@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+
+	<body>
+		<div class="box">
+			<p>后台管理</p>
+			<form method="post">
+				<div class="row">
+					<span class="glyphicon glyphicon-user"></span><input type="text" class='userName' placeholder="请输入用户名" required="required" pattern="\w{4,6}" />
+				</div>
+
+				<div class="row">
+					<span class="glyphicon glyphicon-lock"></span><input type="text" class="passWord" placeholder="请输入密码" required="required" pattern="\w{6,10}" />
+				</div>
+				<input class="sub" type="button" value="登录" />
+				<br />
+				<a href="demo/forgrtPassWord.html">忘记密码</a>
+			</form>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(function() {
+		var url;
+		$('.sub').click(function() {
+			var userName = $('.userName').val();
+			var passWord = $('.passWord').val();
+			console.log(userName + "--" + passWord);
+			if(userName.length<=0||passWord.length<=0){
+				alert("请输入账号密码");
+			}else if(userName.length<4||userName.length>8){
+					alert('请输入4-8位账号名');
+			}else if(passWord.length<6||passWord.length>10){
+				alert('请输入6-10位密码');
+			}
+			
+			$.ajax({
+				type: "post",
+				url: url,
+				data: {
+					userName: userName,
+					passWord: passWord
+				},
+				async: true,
+				success: function(data) {
+					alert(data)
+				}
+			});
+		})
+	})
+</script>

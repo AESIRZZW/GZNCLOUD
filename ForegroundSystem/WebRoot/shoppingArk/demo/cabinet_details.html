@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>购物柜详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" sizes="any" mask="" href="img/1.jpg">
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/cabinet_manage.css" />
+		<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ichart.1.2.src.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.iw_poi_title {
+				color: #CC5522;
+				font-size: 14px;
+				font-weight: bold;
+				overflow: hidden;
+				padding-right: 13px;
+				white-space: nowrap
+			}
+			
+			.iw_poi_content {
+				font: 12px arial, sans-serif;
+				overflow: visible;
+				padding-top: 4px;
+				white-space: -moz-pre-wrap;
+				word-wrap: break-word
+			}
+			main{
+				width: 90%;
+				height: auto;
+				margin: 0 auto;
+			}
+			main aside,main article{
+				width: 48%;
+				display: inline-block;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>设备编号</th>
+					<th>设备名称</th>
+					<th>设备所属分组</th>
+					<th>设备状态</th>
+					<th>设备地址</th>
+					<th>设备坐标</th>
+					<th>ICCID号码</th>
+					<th>激活日期</th>
+					<th>服务终止日期</th>
+					<th>设备套餐类型</th>
+					<th>是否启用<br /> 微信、支<br /> 付宝支付
+					</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1703000006</td>
+					<td>大学城一号柜</td>
+					<td>番禺区</td>
+					<td>在线</td>
+					<td>大学城IC基地502</td>
+					<td>113.384129,22.937244</td>
+					<td>89860 0MFSS YYGXX XXXXP</td>
+					<td>2017-04-10 17:25:42</td>
+					<td>2017-04-10 17:25:42</td>
+					<td>套餐一</td>
+					<td>是</td>
+					<td><button class="btn1" data-toggle="modal" data-target=".modification">修改</button>&nbsp;&nbsp;<button>删除</button></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="height: 20px;"></div>
+		<main>
+			<aside>
+				<!--百度地图容器-->
+				<div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+			</aside>
+			<article>
+				<div id='canvasDiv'></div>
+			</article>
+		</main>
+	</body>
+
+</html>
+<script type="text/javascript">
+	//创建和初始化地图函数：
+	function initMap() {
+		createMap(); //创建地图
+		setMapEvent(); //设置地图事件
+		addMapControl(); //向地图添加控件
+		addMcabineter(); //向地图中添加mcabineter
+	}
+
+	//创建地图函数：
+	function createMap() {
+		var map = new BMap.Map("dituContent"); //在百度地图容器中创建一个地图
+		var point = new BMap.Point(113.40687, 23.041648 ); //定义一个中心点坐标
+		map.centerAndZoom(point, 18); //设定地图的中心点和坐标并将地图显示在地图容器中
+		window.map = map; //将map变量存储在全局
+	}
+
+	//地图事件设置函数：
+	function setMapEvent() {
+		map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+		map.enableScrollWheelZoom(); //启用地图滚轮放大缩小
+		map.enableDoubleClickZoom(); //启用鼠标双击放大，默认启用(可不写)
+		map.enableKeyboard(); //启用键盘上下左右键移动地图
+	}
+
+	//地图控件添加函数：
+	function addMapControl() {
+		//向地图中添加缩放控件
+		var ctrl_nav = new BMap.NavigationControl({
+			anchor: BMAP_ANCHOR_TOP_LEFT,
+			type: BMAP_NAVIGATION_CONTROL_LARGE
+		});
+		map.addControl(ctrl_nav);
+		//向地图中添加缩略图控件
+		var ctrl_ove = new BMap.OverviewMapControl({
+			anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+			isOpen: 1
+		});
+		map.addControl(ctrl_ove);
+		//向地图中添加比例尺控件
+		var ctrl_sca = new BMap.ScaleControl({
+			anchor: BMAP_ANCHOR_BOTTOM_LEFT
+		});
+		map.addControl(ctrl_sca);
+	}
+
+	//标注点数组
+	var mcabineterArr = [{
+		title: "我的标记",
+		content: "我的备注",
+		point: "113.406506|23.041548",
+		isOpen: 0,
+		icon: {
+			w: 21,
+			h: 21,
+			l: 0,
+			t: 0,
+			x: 6,
+			lb: 5
+		}
+	}];
+	//创建marker
+	function addMcabineter() {
+		for (var i = 0; i < mcabineterArr.length; i++) {
+			var json = mcabineterArr[i];
+			var p0 = json.point.split("|")[0];
+			var p1 = json.point.split("|")[1];
+			var point = new BMap.Point(p0, p1);
+			var iconImg = createIcon(json.icon);
+			var marker = new BMap.Marker(point, {
+				icon: iconImg
+			});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title, {
+				"offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20)
+			});
+			marker.setLabel(label);
+			map.addOverlay(marker);
+			label.setStyle({
+				borderColor: "#808080",
+				color: "#333",
+				cursor: "pointer"
+			});
+
+			(function() {
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _mcabineter = marker;
+				_mcabineter.addEventListener("click", function() {
+					this.openInfoWindow(_iw);
+				});
+				_iw.addEventListener("open", function() {
+					_mcabineter.getLabel().hide();
+				})
+				_iw.addEventListener("close", function() {
+					_mcabineter.getLabel().show();
+				})
+				label.addEventListener("click", function() {
+					_mcabineter.openInfoWindow(_iw);
+				})
+				if (!!json.isOpen) {
+					label.hide();
+					_mcabineter.openInfoWindow(_iw);
+				}
+			})()
+		}
+	}
+	//创建InfoWindow
+	function createInfoWindow(i) {
+		var json = mcabineterArr[i];
+		var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+		return iw;
+	}
+	//创建一个Icon
+	function createIcon(json) {
+		var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w, json.h), {
+			imageOffset: new BMap.Size(-json.l, -json.t),
+			infoWindowOffset: new BMap.Size(json.lb + 5, 1),
+			offset: new BMap.Size(json.x, json.h)
+		})
+		return icon;
+	}
+
+	initMap(); //创建和初始化地图
+	
+	var data = [
+		{name : 'H',value : 7,color:'#a5c2d5'},
+	   	{name : 'E',value : 5,color:'#cbab4f'},
+	   	{name : 'L',value : 12,color:'#76a871'},
+	   	{name : 'L',value : 12,color:'#76a871'},
+	   	{name : 'O',value : 15,color:'#a56f8f'},
+	   	{name : 'W',value : 13,color:'#c12c44'},
+	   	{name : 'O',value : 15,color:'#a56f8f'},
+	   	{name : 'R',value : 18,color:'#9f7961'},
+	   	{name : 'L',value : 12,color:'#76a871'},
+	   	{name : 'D',value : 4,color:'#6f83a5'}
+	 ];
+	 $(function(){	
+		var chart = new iChart.Column2D({
+			render : 'canvasDiv',//渲染的Dom目标,canvasDiv为Dom的ID
+			data: data,//绑定数据
+			title : '购物柜详情条形图',//设置标题
+			width : 800,//设置宽度，默认单位为px
+			height : 550,//设置高度，默认单位为px
+			shadow:true,//激活阴影
+			shadow_color:'#c7c7c7',//设置阴影颜色
+			coordinate:{//配置自定义坐标轴
+				scale:[{//配置自定义值轴
+					 position:'left',//配置左值轴	
+					 start_scale:0,//设置开始刻度为0
+					 end_scale:26,//设置结束刻度为26
+					 scale_space:2,//设置刻度间距
+					 listeners:{//配置事件
+						parseText:function(t,x,y){//设置解析值轴文本
+							return {text:t+" cm"}
+						}
+					}
+				}]
+			}
+		});
+		//调用绘图方法开始绘图
+		chart.draw();
+	});
+</script>

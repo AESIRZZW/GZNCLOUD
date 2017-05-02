@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>自助售货柜</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<h3>欢迎使用自助售货机</h3>
+		<div class="goods">
+			<img src="img/2.jpg" />
+			<div><span class="span span1">雪碧</span>&nbsp;&nbsp;￥<span class="span span2">3.5</span></div>
+		</div>
+		<div class="pay">
+			<input class="pay1"></input>
+			<br /><br />
+			<input class="pay2"></input>
+		</div>
+		<div class="help">
+			<a href="index.html"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;&nbsp;选择更多</a>
+			<div></div>
+			<a href="tel:1234567"><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;故障报告</a>
+			<div></div>
+			<a href="demo/help.html"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;使用说明</a>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(function() {
+		//		单个商品时获取二维码中设备号
+//		var numeber = window.document.location.search.slice(8);
+		var numeber="1704000010010001";
+		var device = numeber.slice(0, 9);
+		var cabinet = numeber.slice(9, 12);
+		var locker = numeber.slice(12);
+
+		console.log(device + "--" + cabinet + "--" + locker);
+		var url = "http://192.168.0.112:8080/SpringMVC_Spring_mybatis/goods/getAllGoods";
+
+		
+		var data={};
+		data['device'] = device;
+		var lockers = {};
+		lockers['locker' + 1] = {};
+		lockers['locker' + 1]['cabinet'] = cabinet;
+		lockers['locker' + 1]['locker'] = cabinet;
+		data['lockers'] = lockers;
+		var data = JSON.stringify(data);
+		console.log(data)
+		//		请求,拼接数据
+		$.ajax({
+			type: "post",
+			url: "test1.json",
+			data: "data=" + data,
+			async: false,
+			success: function(data) {
+				console.log(data);
+				$('img').attr('src', 'img/'+data.lockers.locker1.image);
+				$('.span1').html(data.lockers.locker1.name);
+				$('.span2').html(data.lockers.locker1.prize);
+			},
+			error: function(data) {
+				alert("异常！");
+			}
+		})
+		var url = "http://192.168.0.112:8080/SpringMVC_Spring_mybatis/goods/getAllGoods";
+		//			发送请求
+		function submitMoney() {
+			$.ajax({
+				type: "post",
+				url: "test1.json",
+				data: data,
+				dataType: "json",
+				success: function(data) {
+					alert(data);
+				},
+				error: function(data) {
+//					alert("异常！");
+					alert(data);
+				}
+			});
+		}
+		$('.pay1').click(function() {
+			submitMoney();
+		})
+		$('.pay2').click(function() {
+			submitMoney();
+		})
+	})
+</script>

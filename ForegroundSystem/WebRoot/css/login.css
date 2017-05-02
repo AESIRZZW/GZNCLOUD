@@ -1,0 +1,65 @@
+body{
+				position: relative;
+				font-size: 16px;
+			}
+			.box{
+				width: 80%;
+				max-width: 300px;
+				background-color: rgba(167,167,167,0.6);
+				height: 300px;
+				margin: 200px auto 0;
+				padding: 20px;
+				box-sizing: border-box;
+			}
+			form{
+				width: 100%;
+				height: 100%;
+				text-align: center;
+			}
+			.row{
+				width: 90%;
+				margin: 20px auto;
+				height: 40px;
+				/*background-color: green;*/
+			}
+			span{
+				text-align: right;
+				display: inline-block;
+				width: 20%;
+				height: 40px;
+				font-size: 16px;
+				text-align: center;
+				background-color: #fff;
+				color: #1B6D85;
+			}
+			span:before,input:before{
+				line-height: 40px;
+			}
+			input{
+				width: 80%;
+				height: 40px;
+				border: none;
+				font-size: 16px;
+			}
+			input:focus{
+				outline: none;
+			}
+			.sub{
+				width: 90%;
+				border-radius: 4px;
+				background-color: cadetblue;
+				color: #fff;
+			}
+			p{
+				text-align: center;
+				padding: 14px;
+				color: cadetblue;
+				font-size: 20px;
+				font-weight: 800;
+			}
+			a{
+				display: block;
+				width: auto;
+				text-align: right;
+				margin: 14px 0 0 0;
+			}

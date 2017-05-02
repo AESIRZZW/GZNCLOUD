@@ -1,0 +1,81 @@
+{
+	"cabinet_details": [
+		{
+			"device": 170400001,
+			"device_status": "在线",
+			"lokers": [
+				{
+					"cabinet": 1703000011,
+					"loker_name": "大学城一号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "11",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}, {
+					"cabinet": 1703000012,
+					"loker_name": "大学城二号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "11",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}, {
+					"cabinet": 1703000013,
+					"loker_name": "大学城三号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "11",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}
+			]
+		}, 
+		{
+			"device": 170400002,
+			"device_status": "在线",
+			"lokers": [
+				{
+					"cabinet": 1703000021,
+					"loker_name": "大学城四号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "21",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}, {
+					"cabinet": 1703000022,
+					"loker_name": "大学城五号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "21",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}, {
+					"cabinet": 1703000023,
+					"loker_name": "大学城六号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "21",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}
+			]
+		}, 
+		{
+			"device": 170400003,
+			"device_status": "在线",
+			"lokers": [
+				{
+					"cabinet": 1703000031,
+					"loker_name": "大学城一号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "11",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}, {
+					"cabinet": 1703000032,
+					"loker_name": "大学城二号柜",
+					"loker_site": "大学城IC基地502",
+					"locker_id": "11",
+					"img": "1.jpg",
+					"coordinate": "113.384129,22.937244"
+				}
+			]
+		}
+	]
+}

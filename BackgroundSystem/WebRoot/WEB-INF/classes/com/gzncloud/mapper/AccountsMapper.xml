@@ -1,0 +1,1780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzncloud.mapper.AccountsMapper">
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Accounts">
+    <id column="user" jdbcType="BIGINT" property="user" />
+    <result column="wechat_merchant" jdbcType="VARCHAR" property="wechat_merchant" />
+    <result column="wechat_appid" jdbcType="VARCHAR" property="wechat_appid" />
+    <result column="wechat_appsecret" jdbcType="VARCHAR" property="wechat_appsecret" />
+    <result column="wechat_apisecret" jdbcType="VARCHAR" property="wechat_apisecret" />
+    <result column="wechat_certificate" jdbcType="VARCHAR" property="wechat_certificate" />
+    <result column="wechat_personalAccount" jdbcType="VARCHAR" property="wechat_personalAccount" />
+    <result column="wechat_personalName" jdbcType="VARCHAR" property="wechat_personalName" />
+    <result column="wechat_rate" jdbcType="SMALLINT" property="wechat_rate" />
+    <result column="alipay_merchant" jdbcType="VARCHAR" property="alipay_merchant" />
+    <result column="alipay_subaccount" jdbcType="VARCHAR" property="alipay_subaccount" />
+    <result column="alipay_personalAccount" jdbcType="VARCHAR" property="alipay_personalAccount" />
+    <result column="alipay_personalName" jdbcType="VARCHAR" property="alipay_personalName" />
+    <result column="alipay_rate" jdbcType="SMALLINT" property="alipay_rate" />
+    <result column="hotline" jdbcType="VARCHAR" property="hotline" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user, wechat_merchant, wechat_appid, wechat_appsecret, wechat_apisecret, wechat_certificate, 
+    wechat_personalAccount, wechat_personalName, wechat_rate, alipay_merchant, alipay_subaccount, 
+    alipay_personalAccount, alipay_personalName, alipay_rate, hotline, qrcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from accounts
+    where user = #{user,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts (user, wechat_merchant, wechat_appid, 
+      wechat_appsecret, wechat_apisecret, wechat_certificate, 
+      wechat_personalAccount, wechat_personalName, 
+      wechat_rate, alipay_merchant, alipay_subaccount, 
+      alipay_personalAccount, alipay_personalName, 
+      alipay_rate, hotline, qrcode
+      )
+    values (#{user,jdbcType=BIGINT}, #{wechat_merchant,jdbcType=VARCHAR}, #{wechat_appid,jdbcType=VARCHAR}, 
+      #{wechat_appsecret,jdbcType=VARCHAR}, #{wechat_apisecret,jdbcType=VARCHAR}, #{wechat_certificate,jdbcType=VARCHAR}, 
+      #{wechat_personalAccount,jdbcType=VARCHAR}, #{wechat_personalName,jdbcType=VARCHAR}, 
+      #{wechat_rate,jdbcType=SMALLINT}, #{alipay_merchant,jdbcType=VARCHAR}, #{alipay_subaccount,jdbcType=VARCHAR}, 
+      #{alipay_personalAccount,jdbcType=VARCHAR}, #{alipay_personalName,jdbcType=VARCHAR}, 
+      #{alipay_rate,jdbcType=SMALLINT}, #{hotline,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Accounts">
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        user,
+      </if>
+      <if test="wechat_merchant != null">
+        wechat_merchant,
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid,
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret,
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret,
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate,
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount,
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName,
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate,
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant,
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount,
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount,
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName,
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate,
+      </if>
+      <if test="hotline != null">
+        hotline,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="wechat_merchant != null">
+        #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    <set>
+      <if test="wechat_merchant != null">
+        wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appid != null">
+        wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_appsecret != null">
+        wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_apisecret != null">
+        wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_certificate != null">
+        wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalAccount != null">
+        wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_personalName != null">
+        wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_rate != null">
+        wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="alipay_merchant != null">
+        alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_subaccount != null">
+        alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalAccount != null">
+        alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_personalName != null">
+        alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipay_rate != null">
+        alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      </if>
+      <if test="hotline != null">
+        hotline = #{hotline,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Accounts">
+    update accounts
+    set wechat_merchant = #{wechat_merchant,jdbcType=VARCHAR},
+      wechat_appid = #{wechat_appid,jdbcType=VARCHAR},
+      wechat_appsecret = #{wechat_appsecret,jdbcType=VARCHAR},
+      wechat_apisecret = #{wechat_apisecret,jdbcType=VARCHAR},
+      wechat_certificate = #{wechat_certificate,jdbcType=VARCHAR},
+      wechat_personalAccount = #{wechat_personalAccount,jdbcType=VARCHAR},
+      wechat_personalName = #{wechat_personalName,jdbcType=VARCHAR},
+      wechat_rate = #{wechat_rate,jdbcType=SMALLINT},
+      alipay_merchant = #{alipay_merchant,jdbcType=VARCHAR},
+      alipay_subaccount = #{alipay_subaccount,jdbcType=VARCHAR},
+      alipay_personalAccount = #{alipay_personalAccount,jdbcType=VARCHAR},
+      alipay_personalName = #{alipay_personalName,jdbcType=VARCHAR},
+      alipay_rate = #{alipay_rate,jdbcType=SMALLINT},
+      hotline = #{hotline,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR}
+    where user = #{user,jdbcType=BIGINT}
+  </update>
+</mapper>

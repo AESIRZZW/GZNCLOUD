@@ -1,0 +1,403 @@
+h3 {
+	text-align: center;
+	margin: 20px auto;
+}
+
+
+/*柜列表*/
+
+.title {
+	width: 100%;
+	line-height: 40px;
+	text-align: center;
+}
+
+.title span {
+	display: inline-block;
+}
+
+.width1 {
+	width: 100%;
+}
+
+.width2 {
+	width: 50%;
+}
+
+.width3 {
+	width: 30%;
+}
+
+.width4 {
+	width: 25%;
+}
+
+.width5 {
+	widows: 20%;
+}
+
+.width6 {
+	width: 16%;
+}
+
+
+/*商品列表*/
+
+.row {
+	width: 100%;
+	margin: 1rem auto;
+	padding: .4rem;
+	display: none;
+}
+
+.row1 {
+	background-color: rgba(230, 74, 74, .28);
+}
+
+.row2 {
+	background-color: rgba(53, 53, 165, .28);
+}
+
+.row3 {
+	background-color: rgba(255, 255, 0, .28);
+}
+
+.lis {
+	height: 40px;
+	width: 10%;
+	margin-left: 2%;
+	text-align: center;
+	float: left;
+}
+
+
+/*支付列表*/
+
+.pay {
+	margin-top: 6rem;
+	text-align: center;
+}
+
+.pay input {
+	display: inline-block;
+	width: 80%;
+	height: 40px;
+	color: #337ab7;
+	font-size: .8rem;
+	border: none;
+}
+
+.pay1 {
+	background: url('../img/pay1.jpg') center no-repeat;
+}
+
+.pay2 {
+	background: url('../img/pay2.jpg') center no-repeat;
+}
+
+.help {
+	margin: 10px;
+	text-align: right;
+}
+
+.help a {
+	color: #337ab7;
+	font-size: 1rem;
+}
+
+
+/*单个购买*/
+
+.goods {
+	width: 80%;
+	min-width: 300px;
+	height: auto;
+	line-height: 200px;
+	text-align: center;
+	margin: 50px auto;
+	border: 1px solid #337AB7;
+	border-radius: 5px;
+}
+
+.goods img {
+	width: 60%;
+	height: auto;
+}
+
+.goods div {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	margin: 20px auto;
+}
+
+
+/*模拟购物柜样式*/
+
+input[type='checkbox'] {
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+}
+
+.checkbox {
+	float: left;
+	background: #ddd;
+	margin: 5px 2% !important;
+	border-radius: 4px;
+	position: relative;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+	font-size: 0
+}
+
+.checkbox:before {
+	content: '.';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.checkbox label {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	padding: 0;
+	font-size: 12px;
+	font-weight: 500;
+	border-radius: 4px;
+	transition: all .5s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	color: rgba(255, 255, 255, 0);
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
+.checkbox label img,
+.checkbox label i {
+	display: none;
+	width: 100%;
+	height: 20px;
+	margin-top: 10px;
+}
+
+.checkbox input[type=checkbox]:checked + label {
+	background: #5f9ea0;
+	opacity: .6;
+	color: rgba(255, 255, 255, 1);
+	line-height: 12px;
+	overflow: hidden;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.checkbox input[type=checkbox]:checked + label img {
+	display: block;
+}
+
+.lis4 {
+	background: url('../img/4.jpg')center no-repeat;
+	background-size: auto 100%;
+}
+
+.lis3 {
+	background: url('../img/3.jpg')center no-repeat;
+	background-size: auto 100%;
+}
+
+.lis2 {
+	background: url('../img/2.jpg')center no-repeat;
+	background-size: auto 100%;
+}
+
+.lis1 {
+	background: url('../img/5.jpg')center no-repeat;
+	background-size: auto 100%;
+}
+
+.showLists {
+	width: 100%;
+	height: auto;
+	display: none;
+}
+
+.showLists ul {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.showLists ul li {
+	margin: 10px auto;
+	padding: 0;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 12px;
+	border-radius: 4px;
+	padding: 4px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.showLists li .img {
+	display: inline-block;
+	border: 1px solid #5fa8a8;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	float: left;
+}
+
+.showLists li div {
+	margin-left: 60px;
+	height: 25px;
+	line-height: 25px;
+}
+
+.showLists .lastLi {
+	margin: 5px auto;
+	background-color: #fff!important;
+	font-size: 16px;
+}
+
+.showLists .lastLi div {
+	float: left;
+	width: 60%;
+	height: 100%;
+	margin: 0;
+	line-height: 50px;
+}
+
+.showLists .lastLi .submit {
+	display: block;
+	width: 40%;
+	height: 50px;
+	line-height: 50px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #5f9ea0;
+	float: left;
+	border-radius: 4px;
+	background-size: 100% 60%;
+	background-color: #fff;
+}
+
+.showLists ul li:nth-child(2n-1) {
+	background: rgba(95, 168, 168, .4);
+}
+
+.span {
+	font-size: 16px;
+	font-weight: 300;
+	color: red;
+	transition: all 1s 1s;
+}
+
+.showLists li i {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	z-index: 100;
+	display: block;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+}
+
+.showLists li i span {
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+.showLists li i span:before {
+	color: red;
+	font-size: 17px;
+}
+
+.pace {
+	-webkit-pointer-events: none;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.pace .pace-activity {
+	display: block;
+	position: fixed;
+	z-index: 2000;
+	top: 0;
+	right: 0;
+	width: 700px;
+	height: 700px;
+	background: #29d;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: translateX(100%) translateY(-100%) rotate(45deg);
+	transform: translateX(100%) translateY(-100%) rotate(45deg);
+	pointer-events: none;
+}
+
+.pace.pace-active .pace-activity {
+	-webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+	transform: translateX(50%) translateY(-50%) rotate(45deg);
+}
+
+.pace .pace-activity::before,
+.pace .pace-activity::after {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	display: block;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	content: '';
+}
+
+.pace .pace-activity::before {
+	margin-left: -40px;
+	width: 80px;
+	height: 80px;
+	border-right-color: rgba(0, 0, 0, .2);
+	border-left-color: rgba(0, 0, 0, .2);
+	-webkit-animation: pace-theme-corner-indicator-spin 3s linear infinite;
+	animation: pace-theme-corner-indicator-spin 3s linear infinite;
+}
+
+.pace .pace-activity::after {
+	bottom: 50px;
+	margin-left: -20px;
+	width: 40px;
+	height: 40px;
+	border-top-color: rgba(0, 0, 0, .2);
+	border-bottom-color: rgba(0, 0, 0, .2);
+	-webkit-animation: pace-theme-corner-indicator-spin 1s linear infinite;
+	animation: pace-theme-corner-indicator-spin 1s linear infinite;
+}
+
+@-webkit-keyframes pace-theme-corner-indicator-spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+	}
+}
+
+@keyframes pace-theme-corner-indicator-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
+}

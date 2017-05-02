@@ -1,0 +1,77 @@
+html,
+body,
+div,
+p,
+ul,
+li,
+a,
+span,
+u,
+i,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input {
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #fff;
+	font-size: 16px;
+}
+
+
+/*js添加的类*/
+
+.border {
+	border: 2px solid #337AB7;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.bgc {
+	background: #337AB7;
+	border-radius: 5px;
+	color: #fff;
+}
+
+.color {
+	color: #5f9ea0;
+}
+
+.border-r {
+	border-right: 1px solid #9a9a9a;
+}
+
+.border-b {
+	border-bottom: 1px solid #9a9a9a;
+}
+
+header {
+	height: 50px;
+	line-height: 50px;
+	padding-left: 20px;
+	background-color: #5f9ea0;
+	color: #fff;
+}
+
+.button {
+	margin: 20px;
+	height: 40px;
+	line-height: 40px;
+	width: 120px;
+	border: 1px solid #5f9ea0;
+	background-color: #fff;
+	color: #5f9ea0;
+}
+
+.button:hover {
+	color: #fff;
+	background-color: #5f9ea0;
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzncloud.mapper.LockersMapper">
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Lockers">
+    <id column="locker" jdbcType="BIGINT" property="locker" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="cabinet" jdbcType="BIGINT" property="cabinet" />
+    <result column="good" jdbcType="BIGINT" property="good" />
+    <result column="failure" jdbcType="BIT" property="failure" />
+    <result column="opening" jdbcType="BIT" property="opening" />
+    <result column="latest_sell" jdbcType="TIMESTAMP" property="latest_sell" />
+    <result column="latest_restocking" jdbcType="TIMESTAMP" property="latest_restocking" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    locker, sequence, cabinet, good, failure, opening, latest_sell, latest_restocking
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lockers
+    where locker = #{locker,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lockers
+    where locker = #{locker,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Lockers">
+    insert into lockers (locker, sequence, cabinet, 
+      good, failure, opening, latest_sell, 
+      latest_restocking)
+    values (#{locker,jdbcType=BIGINT}, #{sequence,jdbcType=INTEGER}, #{cabinet,jdbcType=BIGINT}, 
+      #{good,jdbcType=BIGINT}, #{failure,jdbcType=BIT}, #{opening,jdbcType=BIT}, #{latest_sell,jdbcType=TIMESTAMP}, 
+      #{latest_restocking,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Lockers">
+    insert into lockers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="locker != null">
+        locker,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="cabinet != null">
+        cabinet,
+      </if>
+      <if test="good != null">
+        good,
+      </if>
+      <if test="failure != null">
+        failure,
+      </if>
+      <if test="opening != null">
+        opening,
+      </if>
+      <if test="latest_sell != null">
+        latest_sell,
+      </if>
+      <if test="latest_restocking != null">
+        latest_restocking,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="locker != null">
+        #{locker,jdbcType=BIGINT},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="cabinet != null">
+        #{cabinet,jdbcType=BIGINT},
+      </if>
+      <if test="good != null">
+        #{good,jdbcType=BIGINT},
+      </if>
+      <if test="failure != null">
+        #{failure,jdbcType=BIT},
+      </if>
+      <if test="opening != null">
+        #{opening,jdbcType=BIT},
+      </if>
+      <if test="latest_sell != null">
+        #{latest_sell,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latest_restocking != null">
+        #{latest_restocking,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Lockers">
+    update lockers
+    <set>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="cabinet != null">
+        cabinet = #{cabinet,jdbcType=BIGINT},
+      </if>
+      <if test="good != null">
+        good = #{good,jdbcType=BIGINT},
+      </if>
+      <if test="failure != null">
+        failure = #{failure,jdbcType=BIT},
+      </if>
+      <if test="opening != null">
+        opening = #{opening,jdbcType=BIT},
+      </if>
+      <if test="latest_sell != null">
+        latest_sell = #{latest_sell,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latest_restocking != null">
+        latest_restocking = #{latest_restocking,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where locker = #{locker,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Lockers">
+    update lockers
+    set sequence = #{sequence,jdbcType=INTEGER},
+      cabinet = #{cabinet,jdbcType=BIGINT},
+      good = #{good,jdbcType=BIGINT},
+      failure = #{failure,jdbcType=BIT},
+      opening = #{opening,jdbcType=BIT},
+      latest_sell = #{latest_sell,jdbcType=TIMESTAMP},
+      latest_restocking = #{latest_restocking,jdbcType=TIMESTAMP}
+    where locker = #{locker,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 根据购物柜编号查询购物盒列表 -->
+  <select id="selectByCabinet" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lockers
+    where cabinet = #{cabinet,jdbcType=BIGINT}
+  </select>
+   <!-- 根据购物盒序号查询购物盒列表 -->
+  <select id="selectBySequence" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lockers
+    where sequence = #{cabinet,jdbcType=INTEGER}
+  </select>
+</mapper>

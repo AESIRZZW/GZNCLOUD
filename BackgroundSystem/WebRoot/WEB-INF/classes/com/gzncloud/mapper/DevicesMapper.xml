@@ -1,0 +1,1860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzncloud.mapper.DevicesMapper">
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.gzncloud.domain.Devices">
+    <id column="device" jdbcType="BIGINT" property="device" />
+    <result column="user" jdbcType="BIGINT" property="user" />
+    <result column="team" jdbcType="BIGINT" property="team" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="led_width" jdbcType="INTEGER" property="led_width" />
+    <result column="led_height" jdbcType="INTEGER" property="led_height" />
+    <result column="action_type" jdbcType="SMALLINT" property="action_type" />
+    <result column="action_speed" jdbcType="SMALLINT" property="action_speed" />
+    <result column="action_border" jdbcType="SMALLINT" property="action_border" />
+    <result column="content_text" jdbcType="VARCHAR" property="content_text" />
+    <result column="content_status" jdbcType="SMALLINT" property="content_status" />
+    <result column="server_feature" jdbcType="VARCHAR" property="server_feature" />
+    <result column="wechat_enabled" jdbcType="BIT" property="wechat_enabled" />
+    <result column="alipay_enabled" jdbcType="BIT" property="alipay_enabled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.gzncloud.domain.Devices">
+    <result column="content_matrix" jdbcType="LONGVARBINARY" property="content_matrix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device, user, team, status, led_width, led_height, action_type, action_speed, action_border, 
+    content_text, content_status, server_feature, wechat_enabled, alipay_enabled
+  </sql>
+  <sql id="Blob_Column_List">
+    content_matrix
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from devices
+    where device = #{device,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where device = #{device,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gzncloud.domain.Devices">
+    insert into devices (device, user, team, 
+      status, led_width, led_height, 
+      action_type, action_speed, action_border, 
+      content_text, content_status, server_feature, 
+      wechat_enabled, alipay_enabled, content_matrix
+      )
+    values (#{device,jdbcType=BIGINT}, #{user,jdbcType=BIGINT}, #{team,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{led_width,jdbcType=INTEGER}, #{led_height,jdbcType=INTEGER}, 
+      #{action_type,jdbcType=SMALLINT}, #{action_speed,jdbcType=SMALLINT}, #{action_border,jdbcType=SMALLINT}, 
+      #{content_text,jdbcType=VARCHAR}, #{content_status,jdbcType=SMALLINT}, #{server_feature,jdbcType=VARCHAR}, 
+      #{wechat_enabled,jdbcType=BIT}, #{alipay_enabled,jdbcType=BIT}, #{content_matrix,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gzncloud.domain.Devices">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        device,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="team != null">
+        team,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="led_width != null">
+        led_width,
+      </if>
+      <if test="led_height != null">
+        led_height,
+      </if>
+      <if test="action_type != null">
+        action_type,
+      </if>
+      <if test="action_speed != null">
+        action_speed,
+      </if>
+      <if test="action_border != null">
+        action_border,
+      </if>
+      <if test="content_text != null">
+        content_text,
+      </if>
+      <if test="content_status != null">
+        content_status,
+      </if>
+      <if test="server_feature != null">
+        server_feature,
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled,
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled,
+      </if>
+      <if test="content_matrix != null">
+        content_matrix,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="device != null">
+        #{device,jdbcType=BIGINT},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    <set>
+      <if test="user != null">
+        user = #{user,jdbcType=BIGINT},
+      </if>
+      <if test="team != null">
+        team = #{team,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="led_width != null">
+        led_width = #{led_width,jdbcType=INTEGER},
+      </if>
+      <if test="led_height != null">
+        led_height = #{led_height,jdbcType=INTEGER},
+      </if>
+      <if test="action_type != null">
+        action_type = #{action_type,jdbcType=SMALLINT},
+      </if>
+      <if test="action_speed != null">
+        action_speed = #{action_speed,jdbcType=SMALLINT},
+      </if>
+      <if test="action_border != null">
+        action_border = #{action_border,jdbcType=SMALLINT},
+      </if>
+      <if test="content_text != null">
+        content_text = #{content_text,jdbcType=VARCHAR},
+      </if>
+      <if test="content_status != null">
+        content_status = #{content_status,jdbcType=SMALLINT},
+      </if>
+      <if test="server_feature != null">
+        server_feature = #{server_feature,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat_enabled != null">
+        wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      </if>
+      <if test="alipay_enabled != null">
+        alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      </if>
+      <if test="content_matrix != null">
+        content_matrix = #{content_matrix,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT},
+      content_matrix = #{content_matrix,jdbcType=LONGVARBINARY}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gzncloud.domain.Devices">
+    update devices
+    set user = #{user,jdbcType=BIGINT},
+      team = #{team,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      led_width = #{led_width,jdbcType=INTEGER},
+      led_height = #{led_height,jdbcType=INTEGER},
+      action_type = #{action_type,jdbcType=SMALLINT},
+      action_speed = #{action_speed,jdbcType=SMALLINT},
+      action_border = #{action_border,jdbcType=SMALLINT},
+      content_text = #{content_text,jdbcType=VARCHAR},
+      content_status = #{content_status,jdbcType=SMALLINT},
+      server_feature = #{server_feature,jdbcType=VARCHAR},
+      wechat_enabled = #{wechat_enabled,jdbcType=BIT},
+      alipay_enabled = #{alipay_enabled,jdbcType=BIT}
+    where device = #{device,jdbcType=BIGINT}
+  </update>
+</mapper>

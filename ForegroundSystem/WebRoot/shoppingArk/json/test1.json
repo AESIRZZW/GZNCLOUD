@@ -1,0 +1,13 @@
+{
+	"device_status": "在线",
+	"error_message": "请使用微信或支付宝扫描该二维码",
+	"pay_url": "支付页面地址",
+	"lockers": {
+		"cabinet": 1703000011,
+		"locker": "0001",
+		"name": "罐装82年老陈雪碧",
+		"price": 248,
+		"locker_id":"11",
+		"image": "1.jpg"
+	}
+}

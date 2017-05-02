@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>购物柜管理</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/cabinet_manage.css" />
+		<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cabinet_paging.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/operate.js" type="text/javascript" charset="utf-8"></script>
+	<body class="container-fluid scroll">
+		<header class="row">购物柜管理</header>
+		<div class='inquire'>
+			所属分组：
+			<select name="team" id="teams" class="input">
+				<option value=""></option>
+				<option value="1">番禺区</option>
+				<option value="2">天河区</option>
+				<option value="3">越秀区</option>
+			</select> 设备状态：
+			<select name="device_status" id="status" class="input">
+				<option value=""></option>
+				<option value="未使用">未使用</option>
+				<option value="在线">在线</option>
+				<option value="离线">离线</option>
+			</select> 设备编号：
+			<input type="text" id='device' class="input" />
+			<button id="inquire_cabinet" class="button">查询</button>
+			<button id="add_cabinet" class="button" data-toggle="modal" data-target=".add_cabinet">新增</button>
+		</div>
+		<!--<table class="main-box-nick">-->
+		<table>
+			<thead>
+				<tr>
+					<th>设备编号</th>
+					<th>设备名称</th>
+					<th>设备所属分组</th>
+					<th>设备状态</th>
+					<th>设备地址</th>
+					<th>设备坐标</th>
+					<th>ICCID号码</th>
+					<th>激活日期</th>
+					<th>服务终止日期</th>
+					<th>设备套餐类型</th>
+					<th>是否启用<br /> 微信、支<br /> 付宝支付
+					</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="main-box-nick">
+
+			</tbody>
+		</table>
+		<footer class="pagination-nick"></footer>
+		<div class="modal fade add_cabinet" tabindex="-1" role="dialog" aria-labelledby="add_cabinet">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="add_cabinet">增加设备</h4>
+					</div>
+					<form class="modal_main">
+						<ul class="modal_ul">
+							<li>设备编号: <input type="text" placeholder="请输入设备编号" readonly="readonly" /></li>
+							<li>设备名称: <input type="text" placeholder="请输入设备名称" /> </li>
+							<li>设备所属分组: <input type="text" placeholder="请输入设备所属分组" /></li>
+							<li>设备状态: <input type="text" placeholder="请输入设备状态" /></li>
+							<li>设备地址: <input type="text" placeholder="请输入设备地址" /></li>
+							<li>设备坐标: <input type="text" placeholder="请输入设备坐标" /></li>
+							<li>ICCID号码: <input type="text" placeholder="请输入ICICID号码" /></li>
+							<li>激活日期: <input type="text" placeholder="请输入激活日期" readonly="readonly" /></li>
+							<li>服务终止日期: <input type="text" placeholder="请输入服务终止日期" readonly="readonly" /></li>
+							<li>设备套餐类型: <input type="text" placeholder="请输入设备套餐类型" readonly="readonly" /></li>
+							<li>是否启用微信支付宝支付:
+								<div><input type="checkbox" name="" /></div>
+							</li>
+						</ul>
+						<button class="button sub">提交</button>
+						<button type="button" class="button" data-dismiss="modal" aria-label="Close">取消</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade modification" tabindex="-1" role="dialog" aria-labelledby="modification">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="modification">修改设备</h4>
+					</div>
+					<form class="modal_main">
+						<ul class="modal_ul">
+							<li>设备编号: <input type="text" placeholder="请输入设备编号" readonly="readonly" /></li>
+							<li>设备名称: <input type="text" placeholder="请输入设备名称" /> </li>
+							<li>设备所属分组: <input type="text" placeholder="请输入设备所属分组" /></li>
+							<li>设备状态: <input type="text" placeholder="请输入设备状态" /></li>
+							<li>设备地址: <input type="text" placeholder="请输入设备地址" /></li>
+							<li>设备坐标: <input type="text" placeholder="请输入设备坐标" /></li>
+							<li>ICCID号码: <input type="text" placeholder="请输入ICICID号码" /></li>
+							<li>激活日期: <input type="text" placeholder="请输入激活日期" readonly="readonly" /></li>
+							<li>服务终止日期: <input type="text" placeholder="请输入服务终止日期" readonly="readonly" /></li>
+							<li>设备套餐类型: <input type="text" placeholder="请输入设备套餐类型" readonly="readonly" /></li>
+							<li>是否启用微信支付宝支付:
+								<div><input type="checkbox" name="" /></div>
+							</li>
+						</ul>
+						<button class="button">提交</button>
+						<button type="button" class="button" data-dismiss="modal" aria-label="Close">取消</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

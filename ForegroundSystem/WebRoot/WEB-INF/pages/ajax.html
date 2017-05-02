@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.1.1.js"></script>
+	</head>
+
+	<body>
+		<input type="button" name="" id="" value="submit" />
+		
+</html>
+<script type="text/javascript">
+	$(function() {
+		$('input').click(function() {
+			$.ajax({
+				type: "get",
+				url: "test.json",
+				async: true,
+				success: function(data) {
+					//					console.log(data);
+					//					console.log(data.device_status);
+					//					console.log(data.cabinets_count);
+					//					console.log(data.lockers.length);
+					var html = "",
+						i = 0;
+					for (key in data.lockers) {
+						i++;
+						var number = +data.lockers[key].cabinet + data.lockers[key].locker;
+						html += "<li class=" + "'checkbox lis" + i + " lis '>" + "<input type=" + "'checkbox'" + "value='" + number + "'  id='" + "checkbox" + data.lockers[key].locker + "' name=number/>" + "<label for='" + "checkbox" + data.lockers[key].locker + "'>" + data.lockers[key].prize + "</label></li>";
+						console.log(html)
+					}
+
+				}
+			});
+		})
+	})
+</script>

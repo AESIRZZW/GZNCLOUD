@@ -1,0 +1,134 @@
+{
+	"device_status": "在线",
+	"message":" wechat/alipay",
+	"error_message":"请使用微信或支付宝扫描该二维码",
+	"url":"支付页面地址", 
+
+	"cabinets_count": 3,
+	"cabinets": {
+		"cabinet_lockers_count1": 9,
+		"cabinet_lockers_count2": 3,
+		"cabinet_lockers_count3": 3
+	},
+	"lockers": {
+		"locker1": {
+			"cabinet": 170300001001,
+			"locker": "0001",
+			"name": "罐装82年老陈雪碧",
+			"prize": 2.48,
+			"image": "1.jpg"
+		},
+		"locker2": {
+			"cabinet": 170300001001,
+			"locker": "0002",
+			"name": "瓶装雪碧",
+			"prize": 2.99,
+			"image": "2.jpg"
+		},
+		"locker3": {
+			"cabinet": 170300001001,
+			"locker": "0003",
+			"name": "罐装可乐",
+			"prize": 2.01,
+			"image":"3.jpg"
+		},
+		"locker4": {
+			"cabinet": 170300001001,
+			"locker": "0004",
+			"name": "瓶装可乐",
+			"prize": 3.88,
+			"image": "4.jpg"
+		},
+		"locker5": {
+			"cabinet": 170300001001,
+			"locker": "0005",
+			"name": "罐装王老吉凉茶",
+			"prize": 4.18,
+			"image": "1.jpg"
+		},
+		"locker6": {
+			"cabinet": 170300001001,
+			"locker": "0006",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "4.jpg"
+		},
+		"locker7": {
+			"cabinet": 170300001001,
+			"locker": "0007",
+			"name": "哇哈哈",
+			"prize": 1.2,
+			"image": "3.jpg"
+		},
+		"locker8": {
+			"cabinet": 170300001001,
+			"locker": "0008",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker9": {
+			"cabinet": 170300001001,
+			"locker": "0009",
+			"name": "哇哈哈",
+			"prize": 1.2,
+			"image": "1.jpg"
+		},
+		"locker10": {
+			"cabinet": 170300001002,
+			"locker": "0001",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker11": {
+			"cabinet": 170300001002,
+			"locker": "0002",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker12": {
+			"cabinet": 170300001002,
+			"locker": "0003",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker13": {
+			"cabinet": 170300001003,
+			"locker": "0001",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker14": {
+			"cabinet": 170300001003,
+			"locker": "0002",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker15": {
+			"cabinet": 170300001003,
+			"locker": "0003",
+			"name": "脉动",
+			"prize": 4.5,
+			"image": "2.jpg"
+		},
+		"locker16": {
+			"cabinet": 170300001002,
+			"image":"",
+			"locker": "0004",
+			"name": "",
+			"prize": ""
+		},
+		"locker17": {
+			"cabinet": 170300001003,
+			"image": "",
+			"locker": "0004",
+			"name": "",
+			"prize": ""
+		}
+	}
+}

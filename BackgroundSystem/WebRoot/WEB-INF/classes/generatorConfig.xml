@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/ssss?characterEncoding=utf8" userId="root"
+			password="664zzw228">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 
+			和 NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成domain类的位置 -->
+		<javaModelGenerator targetPackage="com.gzncloud.domain"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.gzncloud.mapper"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.gzncloud.mapper" targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 -->
+		<table tableName="accounts" domainObjectName="Accounts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="user" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="wechat_rate" javaType="java.lang.Short" jdbcType="SMALLINT" />
+		<columnOverride column="alipay_rate" javaType="java.lang.Short" jdbcType="SMALLINT" />		
+		</table>
+		<table tableName="teams" domainObjectName="Teams" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="team" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="user" javaType="java.lang.Long" jdbcType="BIGINT" />	
+		</table>
+		<table tableName="devices" domainObjectName="Devices" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="device" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="user" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="team" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="led_width" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<columnOverride column="led_height" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<columnOverride column="action_type" javaType="java.lang.Short" jdbcType="SMALLINT" />
+		<columnOverride column="action_speed" javaType="java.lang.Short" jdbcType="SMALLINT" />
+		<columnOverride column="action_border" javaType="java.lang.Short" jdbcType="SMALLINT" />
+		<columnOverride column="content_status" javaType="java.lang.Short" jdbcType="SMALLINT" />
+		</table>
+		<table tableName="cabinets" domainObjectName="Cabinets" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="cabinet" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="sequence" javaType="java.lang.Short" jdbcType="SMALLINT" />
+		<columnOverride column="device" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="lockers_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		</table>
+		<table tableName="lockers" domainObjectName="Lockers" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="locker" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="sequence" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<columnOverride column="cabinet" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="good" javaType="java.lang.Long" jdbcType="BIGINT" />
+		</table>
+		<table tableName="orders" domainObjectName="Orders" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="device" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="user" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="initial_amount" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="rate" javaType="java.lang.Short" jdbcType="SMALLINT" />	
+		<columnOverride column="discounted_amount" javaType="java.lang.Long" jdbcType="BIGINT" />
+		</table>
+	    <table tableName="locker_logs" domainObjectName="LockerLogs" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="locker" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="cabinet" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="device" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="good" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="amount" javaType="java.lang.Long" jdbcType="BIGINT" />
+		</table>
+		<table tableName="goods" domainObjectName="Goods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+		<columnOverride column="good" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="user" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="purchase_price " javaType="java.lang.Long" jdbcType="BIGINT" />
+		<columnOverride column="retail_price" javaType="java.lang.Long" jdbcType="BIGINT" />
+		</table>		
+	</context>
+</generatorConfiguration>

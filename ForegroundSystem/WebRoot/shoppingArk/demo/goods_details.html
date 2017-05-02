@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>购物柜详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" sizes="any" mask="" href="img/1.jpg">
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/cabinet_manage.css" />
+		<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ichart.1.2.src.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.iw_poi_title {
+				color: #CC5522;
+				font-size: 14px;
+				font-weight: bold;
+				overflow: hidden;
+				padding-right: 13px;
+				white-space: nowrap
+			}
+			
+			.iw_poi_content {
+				font: 12px arial, sans-serif;
+				overflow: visible;
+				padding-top: 4px;
+				white-space: -moz-pre-wrap;
+				word-wrap: break-word
+			}
+			
+			main {
+				width: 90%;
+				height: auto;
+				margin: 0 auto;
+			}
+			
+			main aside,
+			main article {
+				width: 48%;
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>商品编号</th>
+					<th>商品名称</th>
+					<th>商品单价</th>
+					<th>商品折扣</th>
+					<th>供货量</th>
+					<th>已出售</th>
+					<th>剩余</th>
+					<th>所属厂商</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>统一冰红茶</td>
+					<td>2.5</td>
+					<td>9</td>
+					<td>100</td>
+					<td>0</td>
+					<td>100</td>
+					<td>统一</td>
+					<td><button class="btn1" data-toggle="modal" data-target=".modification">修改</button>&nbsp;&nbsp;<button>删除</button></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="height: 20px;"></div>
+		<main>
+			<aside>
+				<div id='canvasDiv1'></div>
+			</aside>
+			<article>
+				<div id='canvasDiv2'></div>
+			</article>
+		</main>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var data = [{
+		name: 'H',
+		value: 7,
+		color: '#a5c2d5'
+	}, {
+		name: 'E',
+		value: 5,
+		color: '#cbab4f'
+	}, {
+		name: 'L',
+		value: 12,
+		color: '#76a871'
+	}, {
+		name: 'L',
+		value: 12,
+		color: '#76a871'
+	}, {
+		name: 'O',
+		value: 15,
+		color: '#a56f8f'
+	}, {
+		name: 'W',
+		value: 13,
+		color: '#c12c44'
+	}, {
+		name: 'O',
+		value: 15,
+		color: '#a56f8f'
+	}, {
+		name: 'R',
+		value: 18,
+		color: '#9f7961'
+	}, {
+		name: 'L',
+		value: 12,
+		color: '#76a871'
+	}, {
+		name: 'D',
+		value: 4,
+		color: '#6f83a5'
+	}];
+	$(function() {
+		var chart = new iChart.Column2D({
+			render: 'canvasDiv2', //渲染的Dom目标,canvasDiv为Dom的ID
+			data: data, //绑定数据
+			title: '商品详情图', //设置标题
+			width: 800, //设置宽度，默认单位为px
+			height: 550, //设置高度，默认单位为px
+			shadow: true, //激活阴影
+			shadow_color: '#c7c7c7', //设置阴影颜色
+			coordinate: { //配置自定义坐标轴
+				scale: [{ //配置自定义值轴
+					position: 'left', //配置左值轴	
+					start_scale: 0, //设置开始刻度为0
+					end_scale: 26, //设置结束刻度为26
+					scale_space: 2, //设置刻度间距
+					listeners: { //配置事件
+						parseText: function(t, x, y) { //设置解析值轴文本
+							return {
+								text: t + " cm"
+							}
+						}
+					}
+				}]
+			}
+		});
+		//调用绘图方法开始绘图
+		chart.draw();
+	})
+
+	$(function() {
+		var data = [{
+			name: '统一冰红茶',
+			value: [2, 10, 12, 20, 26, 300, 392, 529, 322, 112, 50, 2],
+			color: '#1f7e92',
+			line_width: 2
+		}];
+
+		var chart = new iChart.Area2D({
+			render: 'canvasDiv1',
+			data: data,
+			title: '售卖曲线图',
+			width: 800,
+			height: 550,
+			coordinate: {
+				height: '90%',
+				background_color: '#edf8fa'
+			},
+			sub_option: {
+				hollow_inside: false, //设置一个点的亮色在外环的效果
+				point_size: 10
+			},
+			labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+		});
+
+		chart.draw();
+	});
+</script>

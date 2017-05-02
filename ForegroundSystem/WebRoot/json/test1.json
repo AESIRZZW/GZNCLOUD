@@ -1,0 +1,18 @@
+{
+	"device_status": "在线",
+	"cabinets_count": 3,
+	"cabinets": {
+		"cabinet1_lockers_count": 36,
+		"cabinet2_lockers_count": 64,
+		"cabinet3_lockers_count": 36
+	},
+	"lockers": {
+		"locker1": {
+			"cabinet": 170300001001,
+			"locker": " 001",
+			"name": "哇哈哈",
+			"prize": 2.58,
+			"image": "3.jpg"
+		}
+	}
+}

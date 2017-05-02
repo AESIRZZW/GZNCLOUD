@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>商品管理</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.eot" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.svg" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff" />
+		<link rel="stylesheet" type="text/css" href="../bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<link rel="stylesheet" type="text/css" href="../css/cabinet_manage.css" />
+		<script src="../js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/goods_paging.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/goods_operate.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		.modal_main{
+			height: 460px !important;
+		}
+	</style>
+	<body class="container-fluid scroll">
+		<header class="row">购物柜管理</header>
+		<div class='inquire'>
+			所属厂商：
+			<select name="team" id="teams" class="input">
+				<option value=""></option>
+				<option value="1">统一</option>
+				<option value="2">农夫山泉</option>
+				<option value="3">康师傅</option>
+			</select> 
+			设备编号：
+			<input type="text" id='device' class="input" />
+			<button id="inquire_cabinet" class="button">查询</button>
+			<button id="add_cabinet" class="button" data-toggle="modal" data-target=".add_cabinet">新增</button>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>商品编号</th>
+					<th>商品名称</th>
+					<th>商品单价</th>
+					<th>商品折扣</th>
+					<th>供货量</th>
+					<th>已出售</th>
+					<th>剩余</th>
+					<th>所属厂商</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody class="main-box-nick">
+
+			</tbody>
+		</table>
+		<footer class="pagination-nick"></footer>
+		<div class="modal fade add_cabinet" tabindex="-1" role="dialog" aria-labelledby="add_cabinet">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="add_cabinet">增加设备</h4>
+					</div>
+					<form class="modal_main">
+						<ul class="modal_ul">
+							<li>商品编号: <input type="text" placeholder="请输入商品编号"/></li>
+							<li>商品名称: <input type="text" placeholder="请输入商品名称"/></li>
+							<li>商品单价: <input type="text" placeholder="请输入商品单价" /></li>
+							<li>商品折扣: <input type="text" placeholder="请输入商品折扣" /></li>
+							<li>供货总量: <input type="text" placeholder="请输入供货总量" /> </li>
+							<li>已出售: <input type="text" placeholder="请输入已出售数量" /></li>
+							<li>剩余: <input type="text" placeholder="请输入剩余数量" /></li>
+							<li>所属厂商: <input type="text" placeholder="请输入所属厂商" /></li>							
+						</ul>
+						<button class="button sub">提交</button>
+						<button type="button" class="button" data-dismiss="modal" aria-label="Close">取消</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade modification" tabindex="-1" role="dialog" aria-labelledby="modification">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="modification">修改设备</h4>
+					</div>
+					<form class="modal_main">
+						<ul class="modal_ul">
+							<li>商品编号: <input type="text" placeholder="请输入商品编号"/></li>
+							<li>商品名称: <input type="text" placeholder="请输入商品名称"/></li>
+							<li>商品单价: <input type="text" placeholder="请输入商品单价" /></li>
+							<li>商品折扣: <input type="text" placeholder="请输入商品折扣" /></li>
+							<li>供货总量: <input type="text" placeholder="请输入供货总量" /> </li>
+							<li>已出售: <input type="text" placeholder="请输入已出售数量" /></li>
+							<li>剩余: <input type="text" placeholder="请输入剩余数量" /></li>
+							<li>所属厂商: <input type="text" placeholder="请输入所属厂商" /></li>			
+						</ul>
+						<button class="button">提交</button>
+						<button type="button" class="button" data-dismiss="modal" aria-label="Close">取消</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 	
+		http://www.springframework.org/schema/flex  
+        http://www.springframework.org/schema/flex/spring-flex-1.0.xsd
+        "
+        
+        default-lazy-init="true">
+
+	<context:component-scan base-package="com.gzncloud" />
+
+	<!-- annotation-driven:默认创建了多个对象：RequestMappingHandlerMapping，RequestMappingHandlerAdapter 
+		也就提供对json格式支持 -->
+	<mvc:annotation-driven />
+
+
+	
+
+	
+    <mvc:resources mapping="/bootstrap/**" location="/bootstrap/" />  
+    <mvc:resources mapping="/js/**" location="/js/" />  
+    <mvc:resources mapping="/css/**" location="/css/" /> 
+	<mvc:resources mapping="/img/**" location="/img/" />  
+
+
+	<!-- 配置sprigmvc视图解析器：解析逻辑试图 后台返回逻辑试图：index 视图解析器解析出真正物理视图：前缀+逻辑试图+后缀====/WEB-INF/ndex.jsp -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".html" />
+	</bean>
+	<!-- 文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10240000" />
+	</bean>
+
+
+<!--  	<mvc:interceptors>  -->
+		<!-- 多个拦截器,顺序执行 -->
+<!-- 		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.gzncloud.Interceptor.Interceptor1" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.gzncloud.Interceptor.Interceptor2" />
+		</mvc:interceptor>
+	</mvc:interceptors>              -->
+
+</beans>
